@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact Us • Genius Prompt</title>
+    <meta name="description" content="Contact Genius Prompt support. Get help, ask questions, or share feedback.">
+    <meta name="theme-color" content="#0ea5e9">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="bg"></div>
+    <header class="site-header">
+      <div class="brand">Genius Prompt</div>
+      <a class="cta" href="#contact">Contact</a>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <h1>Contact Genius Prompt</h1>
+        <p>We’re here to help. Reach out with questions, feedback, or support needs.</p>
+      </section>
+
+      <section id="contact" class="card">
+        <div class="card-grid">
+          <div class="card-pane">
+            <h2>Send a Message</h2>
+            <form id="contact-form">
+              <div class="field">
+                <label for="name">Your Name</label>
+                <input id="name" name="name" type="text" placeholder="Jane Doe" required>
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="you@example.com" required>
+              </div>
+              <div class="field">
+                <label for="subject">Subject</label>
+                <input id="subject" name="subject" type="text" placeholder="I need help with…" required>
+              </div>
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="6" placeholder="Tell us how we can help" required></textarea>
+              </div>
+              <button type="submit" class="button">Send Email</button>
+              <p class="help">Submitting opens your email app with a prefilled message.</p>
+            </form>
+          </div>
+          <div class="card-pane info">
+            <h2>Other Ways</h2>
+            <ul class="list">
+              <li>
+                <span class="label">Email</span>
+                <a href="mailto:support.genius@gmail.com">support.genius@gmail.com</a>
+              </li>
+              <li>
+                <span class="label">Support Hours</span>
+                <span>Mon–Fri, 9:00–17:00 (UTC)</span>
+              </li>
+              <li>
+                <span class="label">Response Time</span>
+                <span>Usually within 24–48 hours</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq card">
+        <h2>Quick Answers</h2>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h3>Feature requests</h3>
+            <p>Share your idea and how you’d use it. We prioritize popular requests.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Bug reports</h3>
+            <p>Describe steps to reproduce, screenshots, and app version if possible.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <span>© <span id="year"></span> Genius Prompt</span>
+        <a href="mailto:support.genius@gmail.com">Support</a>
+      </div>
+    </footer>
+
+    <script>
+      const form = document.getElementById('contact-form');
+      const yearEl = document.getElementById('year');
+      yearEl.textContent = new Date().getFullYear();
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const subject = document.getElementById('subject').value.trim();
+        const message = document.getElementById('message').value.trim();
+        const to = 'support.genius@gmail.com';
+        const fullSubject = subject || 'Contact from website';
+        const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+        const mailto = `mailto:${to}?subject=${encodeURIComponent(fullSubject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = mailto;
+      });
+    </script>
+  </body>
+</html>
